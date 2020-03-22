@@ -1,3 +1,7 @@
+
+
+
+
 #### 常用指令
 
 ##### 1、ls
@@ -217,8 +221,7 @@ ctrl + L
 
 ```
 # 管道一般可用于“过滤”，“特殊”，“扩展处理”
-ls | grep a		#输出所有包含a字符的内容
- 
+ls | grep a		#过滤出所有包含a字符的内容
 ```
 
 
@@ -239,8 +242,155 @@ hostname -f		#输出当前主机名中的FQDN(Fully Qualified Domain Name全限�
 # 查看用户的基本信息(用户id，用户组id，附加id...)
 id				#显示当前用户信息
 id [username]	#显示指定用户信息
+
+"""
+验证用户信息 		/etc/passwd
+验证用户组信息		/etc/group
+"""
 ```
 
 
 
-24、
+##### 24、whoami
+
+```
+# 显示当前登录的用户名，一般用户shell脚本，一般用户获取当前操作的用户名，用于记录日志
+whoami
+```
+
+
+
+##### 25、ps
+
+```
+# 用户查看当前服务器的进程信息
+ps
+ps -e	#列出全部进程
+ps -f	#显示全部的列
+ps -ef | grep [processname] #搜索指定进程
+```
+
+
+
+##### 26、top
+
+```
+# 查看服务器进程占的资源
+top		#动态显示
+	M	#将结果按照内存使用从大到小的顺序排列
+	P	#将结果按照CPU使用从大到小的顺序排列
+```
+
+
+
+##### 27、du
+
+```
+# 查看目录的大小
+du
+du -s	#summary 显示汇总的大小
+du -h	#以更可读的方式显示大小
+```
+
+
+
+##### 28、find
+
+```
+# 查找文件
+find [path] [opt] [value]
+find -name [file]	#按照文件名搜索
+find -type f	#搜索文件
+find -type d	#搜索文件夹
+```
+
+
+
+##### 29、service
+
+```
+# 用于控制一些软件的服务，启动/停止/重启
+servive [服务名] start/stop/restart
+```
+
+
+
+##### 30、kill / killall
+
+```
+# 杀死进程
+kill [PID]
+killall [processname]
+```
+
+
+
+##### 31、ifconfig
+
+```
+# 用于操作网卡的相关指令
+ifconfig
+```
+
+
+
+##### 32、reboot
+
+```
+# 重新启动计算机
+reboot		#立即重启
+reboot -w	#模拟重启，将重启写入日志
+```
+
+
+
+##### 33、shutdown
+
+```
+# 关机
+shutdown -h now 	#立即关机
+shutdown -h [time]	#定时关机
+shutdown -c 		#取消关机
+```
+
+
+
+##### 34、uptime
+
+```
+# 输出计算机的持续在线时间
+uptime
+```
+
+
+
+##### 35、uname
+
+```
+# 获取操作系统名称
+uname
+uname -a	#获取所有信息
+```
+
+
+
+##### 36、netstat 
+
+```
+# 查看网络连接状态
+netstat	
+netstat -t	#只列出tcp协议的连接
+netstat -n	#列出ip地址+端口
+netstat -l	#过滤出state列中值为Listen的连接
+netstat -p	#显示出PID值
+```
+
+
+
+##### 37、man
+
+```
+# manual 帮助手册
+man [command]	#查看命令帮助，按q退出
+```
+
