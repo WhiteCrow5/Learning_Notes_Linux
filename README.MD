@@ -759,3 +759,50 @@ service ntpd start
 chkconfig --level 35 ntpd on
 ```
 
+
+
+##### 8、防火墙
+
+```
+# 开启/关闭/重启防火墙
+service iptables start/stop/restart
+/etc/init.d/iptables start/stop/restart
+
+# 查看防火墙状态
+service iptables status
+
+# 查看规则
+iptables -L -n
+
+# 置防火墙 
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT	#允许访问80端口
+/etc/init.d/iptables save	#将防火墙规则保存到/etc/init.d/iptables
+```
+
+
+
+##### 9、rpm
+
+```
+# 查询所有安装的软件
+rpm -qa		
+
+# 卸载软件（存在依赖关系时，不能被卸载）
+rmp -e [software]
+
+# 强制卸载软件
+rpm -e [software] --npdeps
+
+# 安装软件
+rpm -ivh [path]
+
+# 查看块状设备的信息
+lsblk
+
+# 解挂操作
+umount [path]
+
+# 挂载光盘(原始路径均在 /dev/ 下)
+mount [device origin path] [mount path]
+```
+
