@@ -1,4 +1,4 @@
-
+[TOC]
 
 
 
@@ -449,6 +449,10 @@ Esc
 :w [path]
 # 强制退出
 :q!
+# 保存退出(若无修改，文件修改时间不会被修改)
+:x
+# 保存退出(文件修改时间会被更改)
+:wq
 ```
 
 
@@ -549,7 +553,104 @@ ctrl + r
 :syntax off
 # 使用计算器
 编辑模式 --> crtl + R --> =
+# 文件加密
+:X
 ```
 
 
+
+#### 三、自由服务
+
+##### 1、运行模式
+
+```
+# 修改运行模式为命令行模式
+vim etc/inittab	-->	3
+```
+
+
+
+##### 2、用户和用户组
+
+```
+# 存储用户的关键信息
+/etc/passwd
+# 存储用户组的关键信息
+/etc/group
+# 存储用户的密码信息
+/etc/shadow
+
+# 添加用户，同时创建同名的home目录和用户组
+useradd [option] [username]
+	-g	指定用户的用户主组，可以是ID或组名
+	-G	指定用户的用户附加组，可以是ID或组名
+	-u	自定义uid，系统默认从500之后开始分配uid
+	
+# 修改用户
+usermod [option] [username]
+	-g	指定用户的用户主组，可以是ID或组名
+	-G	指定用户的用户附加组，可以是ID或组名
+	-u	自定义uid，系统默认从500之后开始分配uid
+	-l	修改用户名
+
+# 设置密码
+passwd [username]
+
+# 删除用户
+userdel [username]
+	-r	删除用户的同时删除家目录
+	
+# 切换用户
+su [username]
+
+# 添加用户组
+groupadd [option] [groupname]
+	-g	选择自己设置一个自定义的用户组ID数字，默认500开始
+	
+# 用户组编辑
+groupmod [option] [groupname]
+	-g	选择自己设置一个自定义的用户组ID数字
+	-n	设置新的用户组名称
+	
+# 用户组删除
+groupdel [groupname]
+```
+
+
+
+##### 3、网络设置
+
+```
+# 网卡配置路径
+/etc/sysconfig/network-scripts
+
+# 各种快捷方式路径
+/etc/init.d
+
+# 创建快捷方式
+ln -s [originpath] [shortcutpath]
+
+# 重启所有网卡
+service network restart
+/etc/init.d/network restart
+
+# 关闭某个网卡
+ifdown [networkname]
+
+# 开启某个网卡
+ifup [networkname]
+```
+
+
+
+##### 4、ssh服务
+
+```
+# 配置文件所在路径
+/etc/ssh/ssh_config
+/etc/init.d/sshd
+
+# 启动/停止/重启
+service sshd start/stop/restart
+```
 
