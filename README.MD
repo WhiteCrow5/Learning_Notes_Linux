@@ -1,6 +1,58 @@
-[TOC]
-
-
+* [一、常用指令](#%E4%B8%80%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4)
+  * [1、ls](#1ls)
+  * [2、pwd](#2pwd)
+  * [3、cd](#3cd)
+  * [4、mkdir](#4mkdir)
+  * [5、touch](#5touch)
+  * [6、cp](#6cp)
+  * [7、mv](#7mv)
+  * [8、rm](#8rm)
+  * [9、vim](#9vim)
+  * [10、&gt; &gt;&gt;](#10-)
+  * [11、cat](#11cat)
+  * [12、df](#12df)
+  * [13、free](#13free)
+  * [14、head](#14head)
+  * [15、tail](#15tail)
+  * [16、less](#16less)
+  * [17、wc](#17wc)
+  * [18、date](#18date)
+  * [19、cal](#19cal)
+  * [20、clear / ctrl \+ l](#20clear--ctrl--l)
+  * [21、|](#21)
+  * [22、hostname](#22hostname)
+  * [23、id](#23id)
+  * [24、whoami](#24whoami)
+  * [25、ps](#25ps)
+  * [26、top](#26top)
+  * [27、du](#27du)
+  * [28、find](#28find)
+  * [29、service](#29service)
+  * [30、kill / killall](#30kill--killall)
+  * [31、ifconfig](#31ifconfig)
+  * [32、reboot](#32reboot)
+  * [33、shutdown](#33shutdown)
+  * [34、uptime](#34uptime)
+  * [35、uname](#35uname)
+  * [36、netstat](#36netstat)
+  * [37、man](#37man)
+* [二、Vim](#%E4%BA%8Cvim)
+  * [1、打开文件](#1%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6)
+  * [2、进入编辑模式](#2%E8%BF%9B%E5%85%A5%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F)
+  * [2、退出文件](#2%E9%80%80%E5%87%BA%E6%96%87%E4%BB%B6)
+  * [3、光标的移动](#3%E5%85%89%E6%A0%87%E7%9A%84%E7%A7%BB%E5%8A%A8)
+  * [4、修改操作](#4%E4%BF%AE%E6%94%B9%E6%93%8D%E4%BD%9C)
+  * [6、搜索/查找](#6%E6%90%9C%E7%B4%A2%E6%9F%A5%E6%89%BE)
+  * [7、替换](#7%E6%9B%BF%E6%8D%A2)
+  * [8、其他](#8%E5%85%B6%E4%BB%96)
+* [三、自有服务](#%E4%B8%89%E8%87%AA%E6%9C%89%E6%9C%8D%E5%8A%A1)
+  * [1、运行模式](#1%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F)
+  * [2、用户和用户组](#2%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84)
+  * [3、网络设置](#3%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE)
+  * [4、ssh服务](#4ssh%E6%9C%8D%E5%8A%A1)
+  * [5、修改主机名](#5%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D)
+  * [6、chkconfig](#6chkconfig)
+  * [7、ntp服务](#7ntp%E6%9C%8D%E5%8A%A1)
 
 #### 一、常用指令
 
@@ -559,7 +611,7 @@ ctrl + r
 
 
 
-#### 三、自由服务
+#### 三、自有服务
 
 ##### 1、运行模式
 
@@ -652,5 +704,58 @@ ifup [networkname]
 
 # 启动/停止/重启
 service sshd start/stop/restart
+
+# 软件
+Xshell、SecureCRT、PuTTY、FileZilla、PSCP
+```
+
+
+
+##### 5、修改主机名
+
+```
+# 查看主机名
+hostname
+hostname -f(FQDN、全限定域名)
+
+# 临时修改主机名
+hostname [newname]
+# 永久设置主机名（需要重启）
+/etc/sysconfig/network
+# 修改linux服务器的hosts文件，设置FQDN
+/etc/hosts
+```
+
+
+
+##### 6、chkconfig
+
+```
+# 开机启动服务查询(0-6对应开机级别)
+chkconfig --list
+
+# 删除服务
+chkconfig --del [servicename]
+
+# 添加服务
+chkconfig --add [servicenameche]
+
+#设置服务在某个级别下开启或关闭
+chkconfig --level 35 [servicenameche] on/off
+```
+
+
+
+##### 7、ntp服务
+
+```
+# 主要是用于对计算机的时间同步管理操作
+# 手动同步
+ntpdate [ip] 
+
+# 启动ntpd服务自动同步
+service ntpd start
+/etx/init.d/ntpd start
+chkconfig --level 35 ntpd on
 ```
 
