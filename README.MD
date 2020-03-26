@@ -806,3 +806,107 @@ umount [path]
 mount [device origin path] [mount path]
 ```
 
+
+
+##### 10、cron
+
+```
+# 计划任务
+crontab [option]
+	-l	#list, 列出指定用户的计划任务列表
+	-e	#edit, 编辑指定用户的计划任务列表
+		#分(0-59) 时(0-23) 日(1-31) 月(1-12) 周(0-6) 命令	
+		#*(所有数字) -(做区间) /(每/个) ,(多个取值)
+		0 0 * * * * reboot
+		* * * * * date+"%F %T" >> /root/rt.txt
+	-u	#user， 指定的用户名，不指定则表示当前用户
+	-r	#remove， 删除指定用户的计划任务列表
+	
+# 黑名单配置文件
+/etc/cron.deny
+
+# 白名单配置文件（优先级高于黑名单）
+/etc/cron.allow
+```
+
+
+
+#### 四、权限管理
+
+```
+# owner、group、others
+# read、write、execute
+读权限：
+	对于文件夹：读权限影响用户是否能够列出目录结构
+	对于文件：读权限影响用户是否可以查看文件内容
+写权限：
+	对于文件夹：写权限影响用户是否能够创建/删除/复制到/移动到文档
+	对于文件：写权限影响用户是否可以编辑文件
+执行权限：
+	对于文件：执行权限影响用户是否可以执行文件
+
+# 查看权限
+ls -l [path]
+ll
+
+# 设置权限（仅root或owner可用）
+chmod [option] [model] [document]
+	-R: 递归设置权限（选项）
+	-u: 所有者身份
+	-g:	给所有者同组用户设置
+	-o:	给其他用户设置权限
+	-a: 给所有人设置权限
+	-+:	增加权限
+	--:	减少权限
+	-=:	确定权限
+	-r:	可读
+	-w:	可写
+	-x:	执行
+chmod u+x, g+rx, o+r [filename]
+chmod u=x, g=rx, o=r [filename]
+chmod a=--- [filename]
+
+# 数字权限 r=4, w=2, x=1，尽量不要出现2和3
+chmod 777 [filename]
+
+# 使用root用户创建文件夹，权限默认为 drwxr-xr-x
+# 在Linux中，如果要删除一个文件，不是看文件有没有对应的权限，而是看文件所在目录有没有写权限
+```
+
+
+
+##### 1、chown
+
+```
+属主：所属的用户
+属组：所属的用户组
+# 更改文档的所属用户
+chown -R [username] [document]
+# 更改文档的所属用户和所属用户组
+chown -R [username:groupname] [document]
+```
+
+
+
+##### 2、chgrp
+
+```
+# 更改文档的所属用户组
+chgrp -R [groupname] [path]
+```
+
+
+
+##### 3、sudo
+
+``` 
+# 配置
+visudo 
+
+# 给某个用户增加命令权限
+test ALL=(ALL) [commandPath]
+
+# 查询特殊权限
+sudo -l
+```
+
