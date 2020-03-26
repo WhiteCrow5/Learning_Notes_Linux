@@ -53,6 +53,13 @@
   * [5、修改主机名](#5%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D)
   * [6、chkconfig](#6chkconfig)
   * [7、ntp服务](#7ntp%E6%9C%8D%E5%8A%A1)
+  * [8、防火墙](#8%E9%98%B2%E7%81%AB%E5%A2%99)
+  * [9、rpm](#9rpm)
+  * [10、cron](#10cron)
+* [四、权限管理](#%E5%9B%9B%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86)
+  * [1、chown](#1chown)
+  * [2、chgrp](#2chgrp)
+  * [3、sudo](#3sudo)
 
 #### 一、常用指令
 
