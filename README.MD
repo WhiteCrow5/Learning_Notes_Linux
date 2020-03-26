@@ -917,3 +917,105 @@ test ALL=(ALL) [commandPath]
 sudo -l
 ```
 
+
+
+#### 五、网络
+
+##### 1、ping
+
+```
+# 检测当前主机与目标主机之间的连通性
+ping www.baidu.com
+```
+
+
+
+##### 2、netstat
+
+```
+# 查看网络连接信息
+netstat
+netstat -tnlp
+netstat -an
+```
+
+
+
+##### 3、traceroute
+
+```
+# 查找当前主机与目标主机之间所有的网关
+traceroute www.baidu.com
+```
+
+
+
+##### 4、arp
+
+```
+# 地址解析协议（Address Resolution Protocol）根据IP地址获取MAC地址的协议
+# 查询地址
+arp -a
+# 删除缓存地址
+arp -d
+```
+
+
+
+##### 5、tcpdump
+
+```
+# 用来抓包
+tcpdump [protocol] [port]
+tcpdump [protocol] [port] [host]
+tcpdump -i [networ]
+```
+
+
+
+#### 6、shell
+
+```
+# Linux中shell的位置，bash(Bourne shell)
+/bin/bash
+
+# 修改shell解释器，用户不能登录
+usermod -s /sbin/nologin [username]
+
+代码规范：
+#!/bin/bash		指定告知系统当前这个脚本要使用的shell解释器
+
+文件命名规范：
+文件名.sh
+
+输出的内容包含字母和符号，则需要用引号包括起来。纯数字可包可不包
+#-------tese.sh-------#
+#!bin/bash
+echo "hello world"
+#---------------------#
+
+执行：
+chmod +x test.sh
+./test.sh
+或者
+chmod +x test.sh
+/bin/bash test2.sh
+
+#变量定义，变量名等号左右不能有空格，双引号能够识别变量，单引号不能
+class_name="white"
+
+#变量使用，变量的使用必须在变量名前面加上$符号
+echo $class_name
+
+#只读变量
+readonly [variable name]
+
+#获取输入
+read -p [tip message] [variable name]
+
+#删除变量
+unset [variable name]
+```
+
+
+
