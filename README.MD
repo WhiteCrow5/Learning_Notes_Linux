@@ -1015,6 +1015,72 @@ read -p [tip message] [variable name]
 
 #删除变量
 unset [variable name]
+
+#条件语句
+if[condition];then command; fi
+
+if condition
+then
+	command1
+	command2
+	...
+fi
+
+if condition
+then 
+	command1
+	command2
+	...
+else
+	command
+fi
+
+if condition
+then
+	command1
+elif condition
+then
+	command2
+else
+	command...
+fi
+
+#算术运算符(借助expr工具)
+val=`expr $a + $b`
+
+#关系运算符
+$a -eq $b
+$a -ne $b
+$a -gt $b
+$a -lt $b
+$a -ge $b
+$a -le $b
+
+#逻辑运算符
+!false
+$a -o $b
+$a -a $b
+
+#字符串运算符
+$a = $b
+$a != $b
+-z $a	#判断字符串长度是否为0，为0返回true
+-n $a	#判断字符串长度是否为0，不为0返回true
+
+#文件测试运算符
+-b $file	#是否为块设备文件，是返回true
+-c $file	#是否为字符设备文件，是返回true
+-d $file	#是否为目录，是返回true
+-f $file	#是否为普通文件
+-p $file	#是否为有名管道
+-r $file	#是否为可读
+-w $file	#是否为可写
+-x $file	#是否为可执行
+-s $file	#检测文件是否为空
+-e $file	#检测文件（目录）是否存在
+
+#附带选项
+$1 $2	#第一个输入参数 第二个输入参数
 ```
 
 
