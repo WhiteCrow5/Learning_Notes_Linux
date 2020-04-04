@@ -973,7 +973,7 @@ tcpdump -i [networ]
 
 
 
-#### 6、shell
+#### 六、shell
 
 ```
 # Linux中shell的位置，bash(Bourne shell)
@@ -1084,4 +1084,179 @@ $1 $2	#第一个输入参数 第二个输入参数
 ```
 
 
+
+#### 七、MySQL
+
+##### 1、软件安装
+
+```
+#源码包 安装ncurses
+#解包
+tar -zxvf filename.tar.gz
+tar -jxvf filename.tar.bz2
+	-z、 --gzip、 --ungzip	#通过gzip指令处理文件
+	-x、--extract、--get		#从文件中还原文件
+	-v	#显示操作过程
+	-f、--file	#指定一个文件
+	-j	#支持bzip2解压文件
+	
+#配置(config/configure/bootstrap) --> 编译(make/bootstrap) --> 安装(make install/bootstrapd install)
+
+--prefix=path	#指定安装路径
+--with-PACKAGE=包所在路径	#需要依赖的路径
+--without-PACKAGE
+
+./configure --prefix=/usr/local/ncurses
+make && make install
+
+#二进制包 安装lynx
+rpm -qa | grep keywords
+rpm -e keywrods [nodeps]
+rpm -ivh path
+rpm -Uvh path
+rpm -qf path	#查询指定文件属于哪个包
+	
+#yum
+yum list
+yum search
+yum [-y] install path
+yum [-y] update
+yum [-y] remove
+
+yum install mysql
+```
+
+
+
+##### 2、软件初始化
+
+```
+#启动mysqld	默认3306端口
+service mysqld start
+
+#初始化
+mysql_secure_installation
+
+#进入mysql
+mysql -u username -p password
+
+#退出
+exit
+```
+
+
+
+##### 3、库操作
+
+```
+#显示数据库
+SHOW DATABASES;
+
+#创建数据库
+CREATE DATABASE 库名;
+
+#删除数据操
+DROP DATABASE 库名;
+
+#使用数据库
+USE	库名;
+```
+
+
+
+##### 4、表操作
+
+```
+#显示表
+show tables;
+
+#创建表(varchar char int)
+create table 表名
+(
+列名1 数据类型[NOT NULL AUTO_INCREMENT],
+列名2 数据类型,
+列名3 数据类型,
+...,
+primary key
+);
+
+#查看表结构
+desc 表名;
+
+#删除表
+drop table 表名;
+```
+
+
+
+##### 5、记录操作
+
+``` 
+#增
+INSERT INTO [TABLENAME] VALUES (V1,V2,V3,...);
+INSERT INTO [TABLENAME](COL1, COL2,...) VALUES (V1,V2,V3,...);
+
+#改
+UPDATE [TABLENAME] SET COL1 = [NEWVALUE] WHERE COL=VALUE;
+
+#查
+SELECT COL1, COL2... FROM [TABLENAME] WHERE [CONDITION]
+
+#删
+DELETE FROM [TABLENAME] WHERE COL=VALUE
+```
+
+
+
+##### 6、备份
+
+```
+#全量备份（数据+结构）
+mysqldump -uroot -proot -A > newpath
+#指定库备份（数据+结构）
+mysqldump -uroot -proot 库名 > newpath
+#多个库备份（数据+结构）
+mysqldump -uroot -proot --databases db1 db2 > newpath
+```
+
+
+
+##### 7、还原
+
+```
+#还原全部数据库
+mysql -uroot -proot < path
+mysql> source path
+
+#还原单个数据库(指定数据库)
+mysql> use 库名
+mysql> source path
+
+#设置mysql连接字符集
+mysql> set names utf8
+```
+
+
+
+##### 8、远程管理工具
+
+```
+#C/S结构软件：navicat
+```
+
+
+
+#### 八、项目部署
+
+##### 1、LAMP
+
+```
+# linux + apache + mysql + php
+
+#安装php
+yum stall php
+
+#启动apache
+service httpd start
+```
 
